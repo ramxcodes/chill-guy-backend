@@ -12,7 +12,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 app.use(
   cors({
-    origin: "https://chill-guy-roast.vercel.app/"
+    origin: "https://chill-guy-roast.vercel.app"
   })
 );
 
