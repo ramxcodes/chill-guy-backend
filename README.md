@@ -3,6 +3,11 @@
 Welcome to the backend of the Chill Guy Roast app! 
 This is an Express-based server that interacts with GitHub's public API and uses Google's Gemini AI to generate custom roasts for GitHub users based on their profile data. The roast is generated using AI-powered content, making it humorous and creative.
 
+<img src="https://raw.githubusercontent.com/ramxcodes/chill-guy-frontend/refs/heads/main/public/chill%20guy.png">
+
+## Visit Demo : https://chill-guy-roast.vercel.app
+
+
 ## Features
 
 - **Fetch GitHub Profile Data**: Retrieve basic user information such as public repositories, followers, and bio from GitHub.
