@@ -40,13 +40,11 @@ app.get("/roast/:username", async (req, res) => {
       profileData.public_repos
     } repos, ${profileData.followers} followers, ${
       profileData.following
-    } following, ${profileData.stars || 0} stars, and ${
-      profileData.forks || 0
-    } forks. Their bio says "${
-      profileData.bio || "they were too lazy to write one"
+    } following. Their bio says "${
+      profileData.bio || "They have No Bio"
     }". Oh, and their account was created on ${
       profileData.created_at
-    }. Make it brutally honest, sarcastic, and hilarious! also use simple english words.`;
+    }. Make it brutally honest, sarcastic, and hilarious! also use simple english words. keep it 3-5 lines.`;
 
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const result = await model.generateContent(prompt);
