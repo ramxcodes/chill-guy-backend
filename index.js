@@ -12,7 +12,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 app.use(
   cors({
-    origin: "https://chill-guy-roast.vercel.app"
+    origin: "https://chill-guy-roast.vercel.app",
   })
 );
 
@@ -34,13 +34,19 @@ app.get("/roast/:username", async (req, res) => {
     if (!profileData)
       return res.status(404).json({ error: "GitHub user not found" });
 
-    const prompt = `Tell me a brutal roast in simple english don't make sure its very brutal and don't tone down the language about a GitHub user named ${
+    const prompt = `Roast a GitHub user named ${
       profileData.name || username
-    } who has ${profileData.public_repos} repositories, ${
-      profileData.followers
-    } followers, and their bio is ${
-      profileData.bio || "Don't have a bio"
-    }. Make it funny and creative!`;
+    } in the most savage and funny way you can. They’ve got ${
+      profileData.public_repos
+    } repos, ${profileData.followers} followers, ${
+      profileData.following
+    } following, ${profileData.stars || 0} stars, and ${
+      profileData.forks || 0
+    } forks. Their bio says "${
+      profileData.bio || "they were too lazy to write one"
+    }". Oh, and their account was created on ${
+      profileData.created_at
+    }. Make it brutally honest, sarcastic, and hilarious! also use simple english words.`;
 
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const result = await model.generateContent(prompt);
