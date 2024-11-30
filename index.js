@@ -10,9 +10,20 @@ const PORT = process.env.PORT || 3000;
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
+const allowedOrigins = [
+  "https://chill-guy-roast.vercel.app",
+  "https://chillguy.ramx.in"
+];
+
 app.use(
   cors({
-    origin: "https://chill-guy-roast.vercel.app",
+    origin: function (origin, callback) {
+      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    }
   })
 );
 
